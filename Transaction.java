@@ -1,22 +1,20 @@
+import java.util.ArrayList;
+
 public class Transaction {
     private String transactionId;
-    private Product[] items;
-    private int totalItems;
+    private ArrayList<Product> items;
 
     // constructor untuk membuat transaksi
     public Transaction(String transactionId) {
         this.transactionId = transactionId;
-        this.items = new Product[50];
-        this.totalItems = 0;
+        this.items = new ArrayList<>();
     }
 
     // menghitung total harga setelah diskon semua item
     public double processSale() {
         double total = 0;
 
-        for (int i = 0; i < totalItems; i++) {
-            Product p = items[i];
-
+        for (Product p : items) {
             double discount = p.calculateDiscount();
             double finalPrice = p.getPrice() - (p.getPrice() * discount);
 
@@ -28,18 +26,17 @@ public class Transaction {
 
     // menambahkan satu produk ke transaksi
     public void addItem(Product item) {
-        if (totalItems < items.length) {
-            items[totalItems] = item;
-            totalItems++;
-        } else {
-            System.out.println("Keranjang penuh");
-        }
+        items.add(item);
     }
 
     // method overloading untuk menambahkan beberapa produk sekaligus
     public void addItem(Product item, int quantity) {
         for (int i = 0; i < quantity; i++) {
-            addItem(item);
+            items.add(item);
         }
+    }
+
+    public ArrayList<Product> getItems(){
+        return items;
     }
 }

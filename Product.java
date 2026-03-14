@@ -7,7 +7,7 @@ public abstract class Product {
     
         //Constructor default yang akan dipanggil saat membuat objek tanpa paramater (Gunanya buat memberikan nilai default untuk setiap atribut produk).
         public Product() {
-            this.productId = "P000";
+            this.productId = "000";
             this.name = "Unknown";
             this.price = 0;
             this.stockQuantity = 0;
@@ -34,7 +34,7 @@ public abstract class Product {
             System.out.println("  Nama        : " + name);
             System.out.println("  Harga       : Rp " + price);
             System.out.println("  Stok        : " + stockQuantity + " unit");
-            System.out.println("  Diskon      : " + diskon + "%");
+            System.out.printf("  Diskon      : %.2f %% \n" , diskon );
             System.out.println("  Harga Akhir : Rp " + hargaAkhir);
         }
     

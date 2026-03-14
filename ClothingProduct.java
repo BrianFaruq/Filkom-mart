@@ -17,7 +17,7 @@ public class ClothingProduct extends Product{
     public double calculateDiscount() {
         //Pertama-tama, kita memeriksa ukuran pakaian apakah L atau XL, disini menggunakan ".equals()" untuk membandingkan isi String (bukannya "==" yang membandingkan referensi objek). "||" berarti OR, jadi jika salah satu kondisi terpenuhi (antara "L" atau "XL") maka kondisi if sudah terpenuhi.
         if (size.equals("L") || size.equals("XL")) {
-            return 0.15; //Ini digunkan untuk mengembalikan nilai diskon 15% dalam bentuk desimal (0.15).
+            return 0.15; 
         }
         return 0.0; //Jika ukuran tidak L atau XL, maka tidak ada diskon, sehingga mengembalikan 0.0.
     }
@@ -26,7 +26,9 @@ public class ClothingProduct extends Product{
     @Override
     public void getProductInfo() {
         System.out.println("[Clothing Product]");
-        //super.getProductInfo() digunakan untuk memanggil method getProductInfo() dari superclass Product, sehingga informasi umum seperti ID, nama, harga, stok, diskon, dan harga akhir tetap ditampilkan. Setelah itu, kita menambahkan informasi khusus untuk produk pakaian yaitu ukuran dan brand.
+        //super.getProductInfo() digunakan untuk memanggil method getProductInfo() dari superclass Product,
+        // sehingga informasi umum seperti ID, nama, harga, stok, diskon, dan harga akhir tetap ditampilkan.
+        // Setelah itu, kita menambahkan informasi khusus untuk produk pakaian yaitu ukuran dan brand.
         super.getProductInfo();
         System.out.println("  Ukuran      : " + size);
         System.out.println("  Brand       : " + brand);

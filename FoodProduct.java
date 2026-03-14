@@ -4,20 +4,21 @@ public class FoodProduct extends Product {
 
      //Constructor untuk menginisialisasi atribut-atribut yang diwarisi dari superclass Product
      public FoodProduct(String productId, String name, double price, int stockQuantity, String expiryDate) {
-         //super() digunakan untuk memanggil constructor dari superclass Product agar atribut-atribut yang diwarisi dapat diinisialisasi dengan benar.
+         //super() digunakan untuk memanggil constructor dari superclass Product
+         // agar atribut-atribut yang diwarisi dapat diinisialisasi dengan benar.
          super(productId, name, price, stockQuantity);
-         //Atribut expiryDate diinisialisasi dengan nilai yang diberikan saat pembuatan objek FoodProduct.
+         //Atribut expiryDate diinisialisasi dengan nilai yang diberikan saat
+         // pembuatan objek FoodProduct.
          this.expiryDate = expiryDate;
      }
- 
-     //@Override menandakan bahwa method calculateDiscount() ini merupakan implementasi khusus untuk FoodProduct yang menggantikan implementasi default yang mungkin ada di superclass Product.
+     @Override
      public double calculateDiscount() {
          //Logika untuk menghitung diskon berdasarkan jumlah stok, jika stok lebih dari 10 maka diskon 10%, jika tidak maka tidak ada diskon.
          //getStockQuantity() adalah method yang diwarisi dari superclass Product yang digunakan untuk mendapatkan nilai stockQuantity dari superclass Product karena stockQuantity bersifat private sehingga tidak bisa diakses langsung.
          if (getStockQuantity() > 10) {
-             return 0.10; //Mengembalika diskon 10% dalam bentuk desimal
+             return 0.10; 
          }
-         return 0.0; //Jika stok tidak lebih dari 10, maka tidak ada diskon, sehingga mengembalikan 0.0.
+         return 0.0;
      }
  
      //@Override menandakan bahwa method getProductInfo() ini merupakan implementasi khusus untuk FoodProduct yang menggantikan implementasi default yang mungkin ada di superclass Product.
