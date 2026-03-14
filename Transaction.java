@@ -2,7 +2,7 @@ public class Transaction {
     private String transactionId;
     private Product[] items;
     private int totalItems;
-
+//Test branch
     public double processSale(){
         return 0;
     }
