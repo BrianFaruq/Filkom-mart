@@ -27,5 +27,5 @@ public abstract class Product {
     
     void updateStock(int quantity, String reason){
 
-    }
+    }//test branch product
 }
