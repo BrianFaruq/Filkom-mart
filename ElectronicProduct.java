@@ -1,40 +1,38 @@
 public class ElectronicProduct extends Product {
-    //Atribut khusus miliki ElectronicProduct yaitu warrantyPeriod, tidak ada di superclass Product
+    //Atribut spesifik subclass ElectronicProduct
     private String warrantyPeriod;
 
-    //Constructor untuk inisialisasi atribut dari superclass Product
+    //Constructor untuk membuat objek ElectronicProduct
     public ElectronicProduct(String productId, String name, double price, int stockQuantity, String warrantyPeriod) {
-        //super() memanggil constructor yang berparameter milik superclass Product untuk menginisialisasi atribut productId, name, price, dan stockQuantity
+        //super() digunakan untuk memanggil constructor dari superclass (Product)
         super(productId, name, price, stockQuantity);
-        //Atribut warrantyPeriod diinisialisasi dengan parameter yang diterima
+        //Inisialisasi atribut spesifik ElectronicProduct
         this.warrantyPeriod = warrantyPeriod;
     }
 
-    //@Override menandakan bahwa method ini menggantikan versi abstract method di superclass Product
     @Override
+    //Implementasi method calculateDiscount() untuk ElectronicProduct.
+    //Diskon dasar 5%, ditambah 2% jika harga produk di atas 500.000.
     public double calculateDiscount() {
-        //Ini menjadi dasar diskon untuk semua produk elektronik yaitu 5%
         double diskon = 0.05;
-        //Jika kondisi memenuhi(yaitu harga produk lebih dari 500000) maka akan mendapatkan tambahan diskon sebesar 2%
-        //getPrice() digunakan untuk mengakses atribut price yang ada di superclass Product, hal ini terjadi karena atribut price bersifat private sehingga tidak bisa diakses langsung dari subclass, harus melalui method getter yang disediakan di superclass
         if (getPrice() > 500000) {
-            //+= berarti diskon = diskon + 0.02, jadi totalnya menjadi 0.07 (7%) jika kondisi terpenuhi
             diskon += 0.02;
         }
-        //Nilai diskon akhir (0.05 atau 0.07) akan dikembalikan dalam bentuk desimal
         return diskon;
     }
 
-    //@Override menandakan bahwa method ini menggantikan versi method getProductInfo() miliki superclass Product, hal ini bertujuan untuk menambahkan info garansi yang tidak ada pada superclass Product
     @Override
+    //Override method getProductInfo() dari superclass Product
     public void getProductInfo() {
         System.out.println("[Electronic Product]");
-        //super.getProductInfo() akan memanggil method getProductInfo() yang ada di superclass Product untuk menampilkan informasi umum produk seperti productId, name, price, dan stockQuantity
+        //super.getProductInfo() digunakan untuk memanggil method getProductInfo() dari superclass Product,
+        // sehingga informasi umum seperti ID, nama, harga, dan stok tetap ditampilkan.
+        // Setelah itu, kita menambahkan informasi khusus untuk produk elektronik yaitu periode garansi.
         super.getProductInfo();
         System.out.println("  Garansi     : " + warrantyPeriod);
     }
 
-    //Karena warrantyPeriod adalah atribut khusus milik ElectronicProduct, maka kita buat getter dan setter untuk mengakses dan memodifikasi nilai warrantyPeriod
+    //Getter dan setter untuk atribut spesifik subclass ini
     public String getWarrantyPeriod() {
         return warrantyPeriod;
     }

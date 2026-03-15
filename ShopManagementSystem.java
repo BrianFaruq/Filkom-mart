@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ShopManagementSystem {
 
@@ -14,11 +13,6 @@ public class ShopManagementSystem {
         shop.add(new ElectronicProduct("004", "Gergaji mesin", 3_000_000, 7, "2027-06-30"));
         shop.add(new ClothingProduct("005", "Sweater", 120_000, 50, "L", "Louis Vuitton"));
         shop.add(new ClothingProduct("006", "Cardigan", 90_000, 20, "M", "Channel"));
-
-        // Scanner declaration
-        Scanner sc = new Scanner(System.in);
-
-
               /**
          * Membuat 2 contoh objek Transaksi untuk mensimulasikan 2 sesi pembelian
          */
@@ -29,23 +23,33 @@ public class ShopManagementSystem {
                * Penambahan produk beserta kuantitasnya ke transaksi t1
                */
               t1.addItem(shop.get(0),3);
-              t1.addItem(shop.get(2),1);
+              t1.addItem(shop.get(1),1);
+              t1.addItem(shop.get(2),5);
       
               /**
                * Penambahan produk beserta kuantitasnya ke transaksi t2
                */
-              t2.addItem(shop.get(0),2);
+              t2.addItem(shop.get(3),2);
               t2.addItem(shop.get(4),1);
+              t2.addItem(shop.get(5),3);
       
               /**
                * Perhitungan total penjualan dari kedua transaksi
                * dengan mengaggregasikan processSale() dari kedua objek
                */
+              System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
               double totalSales = t1.processSale() + t2.processSale();
-      
-              System.out.println("Transaction 1 Total: Rp " + t1.processSale());
-              System.out.println("Transaction 2 Total: Rp " + t2.processSale());
+              System.out.println("Transaction 1:");
+                t1.printTransactionDetail();
+              System.out.println("----------------------------------");
+               System.out.println("Transaction 2:");
+                t2.printTransactionDetail();
+              System.out.println("----------------------------------");
               System.out.println("Total Sales: Rp " + totalSales);
+            
+              for (Product p : shop) {
+                  p.getProductInfo();
+              }
       
               /**
                * Menghitung sales terbanyak dengan menghitung frekuensi
